@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('study/', include('study.urls')),
     path('tutor/', include('tutor.urls')),
     path('admin/', admin.site.urls),
+	path('sociallogin/', include('allauth.urls')),
+
+	# login template
+	path('', TemplateView.as_view(template_name="login/index.html"))
 ]
+
