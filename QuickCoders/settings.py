@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'study.apps.StudyConfig',
     'tutor.apps.TutorConfig',
+    'tutor.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
 	'django.contrib.sites',
@@ -66,7 +67,7 @@ ROOT_URLCONF = 'QuickCoders.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,3 +147,5 @@ try:
     django_heroku.settings(locals())
 except ImportError:
     found = False
+
+LOGIN_REDIRECT_URL = '/'

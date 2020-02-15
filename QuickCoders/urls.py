@@ -22,6 +22,7 @@ urlpatterns = [
     path('study/', include('study.urls')),
     path('tutor/', include('tutor.urls')),
     path('admin/', admin.site.urls),
+    path('login/', include('login.urls')),
 	path('sociallogin/', include('allauth.urls')),
 
 	# login template
