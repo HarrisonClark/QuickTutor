@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-
 urlpatterns = [
     path('study/', include('study.urls')),
     path('tutor/', include('tutor.urls')),
