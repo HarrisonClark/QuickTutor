@@ -137,3 +137,11 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+
+# Activate Django-Heroku.
+try:
+    # Configure Django App for Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False

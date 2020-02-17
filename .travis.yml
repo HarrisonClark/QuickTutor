@@ -1,0 +1,14 @@
+language: python
+python:
+- '3.6'
+install:
+- pip install -r requirements-travis.txt
+script:
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: T4pOmt+RajR7vlPK3IJ3kF9qiJHV1N7b+OBHSC7Z/MXgO74cuiy4C6hUa9yPCPDnz8+b3GmHppp4PTNDwQzLTFNu0Up2n4MJQ2NGqUgLRbY0vP6LS4ldHrPmAkQd+9E/Xbf72LUe2zF82uDxyCeRaPVDxJkNJkdqyB0ns6Syp7mRoZfGaz5A8ad1JbUGHNm/31nG3cjdInTTT5Ujn5w4YpRh8jQmM6LPnR4frOVNIMjja48bfP8bY25PZKB2j81P5WZiMYjpeXWRFb+kTR4z53wYlcEU7hYAJd25w42EMxK8dpv82KhIYCrovdF2f4Kua6ZEPtGfbXkUnNZg8Y9E10MNshiv+4fQy1c9OvkQulUfzY/ZWrdb6bs8hlZ6tAdPVkPINE3BkQzg4bWrbdR3XR/4+4cmwmjTeb6bCK11HAWLBY0XesYnmOeKjQ/L057LIcabZ15bc4fb09qcMD9/uVXPt2bGgvKVZXfeTzNftXGsDKipKaibAs63rRHyLlOSTS0J05AwveFEJgl87J9lP+nLrByY70AzHds0DVmFj89/5LrFHkEDBtsB1ZCVucczSaErVSlFMWzUVadF7VZ2VBEN/Oo80kT+lH+Jyu+MRNgRDp0YcMCMYYqtgtWrH5WOj4JaMGUW38frCzgHSWKHW9vgHBB9/j7hvbig/kIh5ig=
+  app: project-103-quick-coders
+  on:
+    repo: uva-cs3240-s20/project-103-quick-coders
