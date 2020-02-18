@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'study.apps.StudyConfig',
     'tutor.apps.TutorConfig',
-    'tutor.apps.LoginConfig',
     'login.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
