@@ -25,9 +25,9 @@ urlpatterns = [
     path('login/', include('login.urls')),
 	path('sociallogin/', include('allauth.urls'), name="social"),
 
-    path('', homepage)
+    # path('', homepage)
 
 	# login template
-	# path('', TemplateView.as_view(template_name="login/index.html"))
+	path('', TemplateView.as_view(template_name="login/index.html"))
 ]
 

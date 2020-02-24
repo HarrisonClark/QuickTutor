@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -38,6 +42,11 @@
   <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
+
+
+<a href="{% provider_login_url "google" %}">
+  <img src="{% static "sociallogin/btn_google_light_normal_ios.svg" %}" alt="Google Login">
+</a>
 <p><a href="{% url 'login:signup' %}">Create an account</a></p>
 {% endif %}
 {% endblock %}
