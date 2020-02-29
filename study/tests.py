@@ -8,4 +8,4 @@ class TestStudentRatings(TestCase):
         StudentRatings.objects.create(rating=5, comment="Excellent!")
     def test_specific_rating(self):
         stu_comment = StudentRatings.objects.get(comment="Excellence")
-        self.assertEqual(stu_comment.review_sentence(), 'This student has a rating of 5, and a student said \"excellent\" about this tutor')
+        self.assertEqual(stu_comment.review_sentence(), "Rating is 5, and comment is \" Excellent! \"")
