@@ -9,8 +9,7 @@ class StudentRatings(models.Model):
     comment = models.CharField(max_length=200)
     # student = models.ForeignKey(Student, on_delete=models.CASCADE)
     # rater = models.ForeignKey(Rating)
-    def review_sentence(self):
-        return 'Rating is ' + str(self.rating) + " and the comment is " + "\"" + self.comment + "\""
+
         # return 'Rating is {}, and comment is \" {} \"'.format(self.rating, self.comment)
 
 class Student(models.Model):
