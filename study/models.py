@@ -10,7 +10,8 @@ class StudentRatings(models.Model):
     # student = models.ForeignKey(Student, on_delete=models.CASCADE)
     # rater = models.ForeignKey(Rating)
     def review_sentence(self):
-        return 'Rating is {}, and comment is \" {} \"'.format(self.rating, self.comment)
+        return 'Rating is ' + str(self.rating) + " and the comment is " + "\"" + self.comment + "\""
+        # return 'Rating is {}, and comment is \" {} \"'.format(self.rating, self.comment)
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
