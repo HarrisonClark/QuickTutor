@@ -7,5 +7,5 @@ class TestStudentRatings(TestCase):
     def setUp(self):
         StudentRatings.objects.create(rating=5, comment="Excellent!")
     def test_specific_rating(self):
-        stu_comment = StudentRatings.objects.get(rating=5, comment="Excellent").first()
+        stu_comment = StudentRatings.objects.get(rating=5, comment="Excellent")
         self.assertEqual(stu_comment.review_sentence(), 'Rating is ' + str(5) + " and the comment is " + "\"Excellent!\"")
