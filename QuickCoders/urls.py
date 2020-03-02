@@ -19,6 +19,7 @@ from django.views.generic import TemplateView
 from .views import homepage
 
 urlpatterns = [
+    path('userprofile/', include('userprofile.urls')),
     path('study/', include('study.urls')),
     path('admin/', admin.site.urls),
     path('login/', include('login.urls')),
