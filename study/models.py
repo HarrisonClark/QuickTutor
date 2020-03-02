@@ -20,14 +20,13 @@ class Student(models.Model):
     email = models.CharField(max_length=100)
     picture = models.URLField()
     bio = models.CharField(max_length=200, blank = True)
-    rating = models.ForeignKey(StudentRatings, on_delete=models.CASCADE)
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         new_student = Student(user=instance)
-#         new_student.save()
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        new_student = Student(user=instance)
+        new_student.save()
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.student.save()
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.student.save()
