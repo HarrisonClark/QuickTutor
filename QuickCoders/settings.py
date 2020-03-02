@@ -32,24 +32,20 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'study.apps.StudyConfig',
-    'tutor.apps.TutorConfig',
     'login.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
-	'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	# 'django.contrib.sites.models.Site',
 
-	'sociallogin',
-
-	# Social Login using allauth
-	'allauth',
-	'allauth.account',
-	'allauth.socialaccount',
-	'allauth.socialaccount.providers.google',
+    # Social Login using allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'crispy_forms',
 ]
 
@@ -142,8 +138,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'login/static', 'static_root')
 
 # Social Login allauth settings
 AUTHENTICATION_BACKENDS = (
-	'django.contrib.auth.backends.ModelBackend',
-	'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 SITE_ID = 1
