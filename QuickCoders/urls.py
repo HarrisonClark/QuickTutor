@@ -20,14 +20,11 @@ from .views import homepage
 
 urlpatterns = [
     path('study/', include('study.urls')),
-    path('tutor/', include('tutor.urls')),
     path('admin/', admin.site.urls),
     path('login/', include('login.urls')),
-	path('sociallogin/', include('allauth.urls'), name="social"),
+    path('', homepage),
+    path('sociallogin/', include('allauth.urls'), name="social"),
 
-    path('', homepage)
-
-	# login template
-	# path('', TemplateView.as_view(template_name="login/index.html"))
+    # login template
+    # path('', TemplateView.as_view(template_name="login/index.html"))
 ]
-
