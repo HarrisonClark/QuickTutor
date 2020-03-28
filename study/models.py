@@ -53,6 +53,9 @@ class tutorRequest(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     description = models.TextField()
 
+    def __str__(self):
+        return self.course.subject + self.course.course_number + ": " + self.description
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
