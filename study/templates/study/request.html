@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1>Welcome {{ user.get_username }}</h1>
+
+<form action="/study/tutor-request/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+
+{% else %}
+
+<p>Please login to see this page.</p>
+{% endif %}
+{% endblock %}
