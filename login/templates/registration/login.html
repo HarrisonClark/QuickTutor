@@ -5,48 +5,67 @@
 {% providers_media_js %}
 
 {% block content %}
+<head>    
+	<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %} " />
+	<title>Sign Up</title>
+</head>
+<body>
+	{% if user.is_authenticated %}
+		<h1>Welcome {{ user.get_username }}</h1>
+		<a href="{% url 'login:logout' %}">Logout</a>
+	{% else %}
+		{% if form.errors %}
+			<p>Your username and password didn't match. Please try again.</p>
+		{% endif %} 
+		{% if next %} 
+			{% if user.is_authenticated %}
+				<p>
+					Your account doesn't have access to this page. To proceed, please login with
+					an account that has access.
+				</p>
+			{% else %}
+				<p>Please login to see this page.</p>
+			{% endif %} 
+		{% endif %}
 
-{% if user.is_authenticated %}
-<h1>Welcome {{ user.get_username }}</h1>
-<a href="{% url 'login:logout' %}">Logout</a>
+		<div class="login-container">
+			<form class="login-form" method="post" action="{% url 'login:login' %}">
+			{% csrf_token %}
+			<h2>Login</h2>
+			<!-- <table>
+				<tr> -->
+				<!-- <td>{{ form.username.label_tag }}</td> -->
+				<!-- <td>{{ form.username }}</td> -->
+				<!-- </tr>
+				<tr> -->
+				<!-- <td>{{ form.password.label_tag }}</td> -->
+				<!-- <td>{{ form.password }}</td> -->
+				<!-- </tr>
+			</table> -->
 
-{% else %}
+				<div class="form-group">
+					{% for field in form %}
+						<div class="input-group">
+							<input class="login-input" type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" /> 
+							{{ field.errors }}
+						</div>
+					{% endfor %}
 
-<h2>Login</h2>
+					<button type="submit" class="login-button">Login</button>
+					<input type="hidden" name="next" value="{{ next }}" />
+				</div>
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %} {% if next %} {% if user.is_authenticated %}
-<p>
-  Your account doesn't have access to this page. To proceed, please login with
-  an account that has access.
-</p>
-{% else %}
-<p>Please login to see this page.</p>
-{% endif %} {% endif %}
+				<div class="separator"></div>
 
-<form method="post" action="{% url 'login:login' %}">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <td>{{ form.username.label_tag }}</td>
-      <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-      <td>{{ form.password.label_tag }}</td>
-      <td>{{ form.password }}</td>
-    </tr>
-  </table>
+				<div class="google-login-container">
+					<a href="{% provider_login_url "google" %}">
+						<img id="google-login-button" src="{% static "sociallogin/btn_google_signin_light_normal_web@2x.png" %}" alt="Google Login">
+					</a>
+				</div>
+			</form>
 
-  <input type="submit" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
-
-
-<a href="{% provider_login_url "google" %}">
-  <img src="{% static "sociallogin/btn_google_light_normal_ios.svg" %}" alt="Google Login">
-</a>
-
-<p><a href="{% url 'login:signup' %}">Create an account</a></p>
-{% endif %}
+			<div class="create-account-container"><a href="{% url 'login:signup' %}">Create an account</a></div>
+		</div>
+	{% endif %}
+</body>
 {% endblock %}
