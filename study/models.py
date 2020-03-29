@@ -52,6 +52,7 @@ class tutorRequest(models.Model):
         Tutor, on_delete=models.CASCADE, blank=True, null=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     description = models.TextField()
+    pub_date = models.DateTimeField('date published')
 
     def __str__(self):
         return self.course.subject + self.course.course_number + ": " + self.description

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} Recent Requests {% endblock %}
+
+{% block content %}
+
+<h1>Tutor Requests</h1>
+
+{% if requests_list %}
+    {% for request in requests_list %}
+        <p>{{ request.description }} <i>by {{ request.student.first_name }} {{ request.student.last_name }}</i></p>
+    {% endfor %}
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+{% endblock %}
