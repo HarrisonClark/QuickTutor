@@ -1,21 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-	<!-- {{ form.as_p }} -->
-	<div class="form-group">
-        {% for field in form %}
-            <div class="input-group">
-                <input class="signup-input" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" type="text" /> 
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-		<button type="submit">Sign up</button>
-	</div>
-  </form>
-<p><a href="{% url 'login:login' %}">Already have an account? Login!</a></p>
+	<head>    
+		<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %} " />
+		<title>Sign Up</title>
+	</head>
+	<body>
+		<div class="signup-container">
+			<h2>Sign up</h2>
+			<form class="signup-form" method="post">
+				{% csrf_token %}
+				<!-- {{ form.as_p }} -->
+				<div class="form-group">
+					{% for field in form %}
+						<div class="input-group">
+							<input class="signup-input" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" type="text" /> 
+							{{ field.errors }}
+						</div>
+					{% endfor %}
+					<button class="signup-button" type="submit">Sign up</button>
+				</div>
+			</form>
+			<p><a href="{% url 'login:login' %}">Already have an account? Login!</a></p>
+		</div>
+	</body>
 {% endblock %}
