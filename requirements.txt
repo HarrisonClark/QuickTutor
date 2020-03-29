@@ -28,3 +28,4 @@ wrapt==1.11.2
 django-heroku
 gunicorn
 django-crispy-forms
+whitenoise
