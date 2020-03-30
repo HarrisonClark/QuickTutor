@@ -8,8 +8,8 @@
     <p>Username: {{ user }}</p>
     <p>First Name: {{ user.first_name }}</p>
     <p>Last Name: {{ user.last_name }}</p>
-    <p>Year: {{ user.year }}</p>
-    <p>Bio: {{ user.bio }}</p>
+    <p>Year: {{ user.student.student_year }}</p>
+    <p>Bio: {{ user.student.bio }}</p>
     <a href="edit" class="button">Edit Profile</a>
 </div>
 {% endblock %}
