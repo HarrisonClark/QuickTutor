@@ -6,4 +6,5 @@ from . import views
 app_name = 'userprofile'
 urlpatterns = [
     path('', views.index, name="index"),
+    path('edit/', views.edit_profile, name="edit")
 ]
