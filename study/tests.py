@@ -13,15 +13,7 @@ class TutorRequestTestCase(TestCase):
     def test_number_of_users(self):
         self.assertEqual(User.objects.all().count(), 1)
 
-    def test_get_user_permissions(self):
-        self.assertEqual(self.user.get_user_permissions(), {'user_perm'})
-
-    def test_email(self):
-        self.assertIsNone(User.email)
-
-    def test_staff_setting (self):
-        self.assertFalse(User.is_staff)
-    
+  
 class StudentRatingsTestCase(TestCase):
 
     def setUp(self):
