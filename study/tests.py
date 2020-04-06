@@ -37,7 +37,7 @@ class CourseTestCase(TestCase):
 
     def test_number_courses(self):
         self.assertEquals(Course.objects.all().count(), 3)
-        self.assertFalse(Course.objects.all().count(), 2)
+        self.assertNotEquals(Course.objects.all().count(), 2)
     
     def check_number(self):
         cs110 = Course.objects.get(name="Basic programming")
