@@ -26,8 +26,6 @@ class Student(models.Model):
 
 class Tutor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=300)
-    last_name = models.CharField(max_length=300)
     picture = models.URLField()
     # CoursesTaken = models.ArrayField(
     #     models.ForeignKey(Course, on_delete=models.CASCADE))

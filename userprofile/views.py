@@ -9,6 +9,8 @@ from study.models import Student
 @login_required
 def index(request):
     return render(request, 'userprofile/index.html')
+def index_tutor(request):
+    return render(request, 'userprofile/index_tutor.html')
 
 @login_required
 def edit_profile(request):
