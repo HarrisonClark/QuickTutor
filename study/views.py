@@ -39,7 +39,6 @@ def tutor_request(request):
 
     return render(request, 'study/request.html', {'form': form})
 
-
 class RequestsView(generic.ListView):
     template_name = "study/request_list.html"
     context_object_name = "requests_list"
