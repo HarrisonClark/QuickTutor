@@ -3,13 +3,14 @@
 {% block title %} Profile {% endblock %} 
 
 {% block content %}
-<div class="container">
-    <h1>Profile</h1>
+<div class="container" style="margin-bottom:50px">
+    <h1>Profile:</h1>
     <p>Username: {{ user }}</p>
     <p>First Name: {{ user.first_name }}</p>
     <p>Last Name: {{ user.last_name }}</p>
     <p>Year: {{ user.student.student_year }}</p>
     <p>Bio: {{ user.student.bio }}</p>
-    <a href="edit" class="button">Edit Profile</a>
+    <a href="edit" class="btn btn-outline-primary btn-sm">Edit Profile</a>
 </div>
+    <a href="{% url 'login:logout' %}" class="btn btn-danger btn-lg">Logout</a>
 {% endblock %}

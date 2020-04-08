@@ -16,15 +16,12 @@ class StudentRatings(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=300)
-    last_name = models.CharField(max_length=300)
     student_year = models.CharField(max_length=50)
-    # email = models.CharField(max_length=100)
     picture = models.URLField()
     bio = models.TextField(max_length=200, blank=True)
 
     def __str__(self):
-        return self.user.username + ": " + self.first_name + " " + self.last_name
+        return self.user.username + ": " + self.user.first_name + " " + self.user.last_name
 
 
 class Tutor(models.Model):
