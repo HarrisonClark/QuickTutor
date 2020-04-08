@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import StudentRatings, Student, Course
+from .forms import TutorRequestForm
 
 
 class TutorRequestTestCase(TestCase):
@@ -34,7 +35,6 @@ class CourseTestCase(TestCase):
         Course.objects.create(name = "Advanced Physics", description = "Complex topics", subject = "Physics" , course_number = 543)
         Course.objects.create(name = "Basic programming", description = "for beginners", subject = "Computer Science" , course_number = 110)
 
-
     def test_number_courses(self):
         self.assertEquals(Course.objects.all().count(), 3)
         self.assertNotEquals(Course.objects.all().count(), 2)
@@ -46,5 +46,3 @@ class CourseTestCase(TestCase):
         self.assertEqual(cs110.course_number, 110)
         self.assertEqual(phys543.course_number, 543)
         self.assertFalse(math101.course_number, 101)
-
-
