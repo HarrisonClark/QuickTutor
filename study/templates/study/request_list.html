@@ -11,7 +11,8 @@
         <p>{{ request.description }} <i>by {{ request.student.first_name }} {{ request.student.last_name }}</i></p>
     {% endfor %}
 {% else %}
-    <p>No polls are available.</p>
+    <p>There are no open tutor requests at this time</p>
+    <p>Please check back later</p>
 {% endif %}
 
 {% endblock %}
