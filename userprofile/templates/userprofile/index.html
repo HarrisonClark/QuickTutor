@@ -5,6 +5,9 @@
 {% block content %}
 <div class="container" style="margin-bottom:50px">
     <h1>Profile:</h1>
+    {% if user.student.picture %}
+        <img src="{{ user.student.picture }}" width="240"> 
+    {% endif %}
     <p>Username: {{ user }}</p>
     <p>First Name: {{ user.first_name }}</p>
     <p>Last Name: {{ user.last_name }}</p>

@@ -28,6 +28,7 @@ def edit_profile(request):
             user.save()
             student.bio = form.cleaned_data['bio']
             student.student_year = form.cleaned_data['student_year']
+            student.picture = form.cleaned_data['picture']
             student.save()
 
         return HttpResponseRedirect('/userprofile')
@@ -38,7 +39,8 @@ def edit_profile(request):
         data = {'first_name': student.user.first_name,
             'last_name':student.user.last_name,
             "bio": student.bio,
-            "student_year": student.student_year}
+            "student_year": student.student_year,
+            "picture": student.picture}
         form = EditProfile(data)
 
         return render(request, 'userprofile/edit.html', {'form': form})
