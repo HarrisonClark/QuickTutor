@@ -22,6 +22,18 @@ body {
 	padding: 0px 50px;
 }
 
+.signup-box{
+	height: 550px;
+}
+
+.signup-inner{
+	width: 100%;
+}
+
+.signup-form{
+	display: block;
+}
+
 h2{
 	font-weight: 900;
 }
@@ -47,13 +59,13 @@ input:focus, textarea:focus{
 	margin-top: 20px;
 	border: none;
 	background: none;
-	border-bottom: 2px solid #78ffd6;
+	border-bottom: 2px solid #8f94fb;
 	transition: 0.3s;
 	/* border-radius: 5px; */
 }
 
 .signup-input:focus, .login-input:focus{
-	border-bottom: 4px solid #78ffd6;
+	border-bottom: 3px solid #4e54c8;
 }
 
 .button-container{
@@ -69,8 +81,8 @@ input:focus, textarea:focus{
 	margin-top: 50px;
 	height: 60px;
 	width: 100%;
-	background-color: #78ffd6;
-	border: 1px solid #78ffd6;
+	background-color: #8f94fb;
+	border: 1px solid #8f94fb;
 	border-radius: 5px;
 	color: white;
 	cursor: pointer;
@@ -80,7 +92,11 @@ input:focus, textarea:focus{
 }
 
 .signup-button:hover, .login-button:hover{
-	height: 64px;
+	background-color: #4e54c8;
+}
+
+.signup-button:focus, .login-button:focus{
+	outline: none;
 }
 
 .separator{

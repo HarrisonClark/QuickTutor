@@ -10,13 +10,12 @@
 		<title>Sign Up</title>
 	</head>
 	<body>
-		<div class="signup-box">
+		<div class="signup-container">
 			<div class="signup-box">
 				<div class="signup-inner">
-					<h2>Sign up</h2>
 					<form class="signup-form" method="post">
 						{% csrf_token %}
-						<!-- {{ form.as_p }} -->
+						<h2>Sign up</h2>
 						<div class="form-group">
 							{% for field in form %}
 								<div class="input-group">
@@ -24,10 +23,14 @@
 									{{ field.errors }}
 								</div>
 							{% endfor %}
-							<button class="signup-button" type="submit">Sign up</button>
+
+							<div class="button-container">
+								<button class="signup-button" type="submit">Sign up</button>
+							</div>
 						</div>
 					</form>
-					<p><a href="{% url 'login:login' %}">Already have an account? Login!</a></p>
+
+					<div class="create-account-container">Already have an account? <a href="{% url 'login:login' %}">Login!</a></div>
 				</div>
 			</div>
 		</div>
