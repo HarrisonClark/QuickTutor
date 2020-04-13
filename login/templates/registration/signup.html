@@ -5,26 +5,31 @@
 
 {% block content %}
 	<head>    
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900;300;400;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %} " />
 		<title>Sign Up</title>
 	</head>
 	<body>
-		<div class="signup-container">
-			<h2>Sign up</h2>
-			<form class="signup-form" method="post">
-				{% csrf_token %}
-				<!-- {{ form.as_p }} -->
-				<div class="form-group">
-					{% for field in form %}
-						<div class="input-group">
-							<input class="signup-input" type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" /> 
-							{{ field.errors }}
+		<div class="signup-box">
+			<div class="signup-box">
+				<div class="signup-inner">
+					<h2>Sign up</h2>
+					<form class="signup-form" method="post">
+						{% csrf_token %}
+						<!-- {{ form.as_p }} -->
+						<div class="form-group">
+							{% for field in form %}
+								<div class="input-group">
+									<input class="signup-input" type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" /> 
+									{{ field.errors }}
+								</div>
+							{% endfor %}
+							<button class="signup-button" type="submit">Sign up</button>
 						</div>
-					{% endfor %}
-					<button class="signup-button" type="submit">Sign up</button>
+					</form>
+					<p><a href="{% url 'login:login' %}">Already have an account? Login!</a></p>
 				</div>
-			</form>
-			<p><a href="{% url 'login:login' %}">Already have an account? Login!</a></p>
+			</div>
 		</div>
 	</body>
 {% endblock %}

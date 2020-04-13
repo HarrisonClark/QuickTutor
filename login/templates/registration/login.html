@@ -6,7 +6,10 @@
 
 {% block content %}
 <head>    
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %} " />
+	
 	<title>Sign Up</title>
 </head>
 <body>
@@ -29,42 +32,37 @@
 		{% endif %}
 
 		<div class="login-container">
-			<form class="login-form" method="post" action="{% url 'login:login' %}">
-			{% csrf_token %}
-			<h2>Login</h2>
-			<!-- <table>
-				<tr> -->
-				<!-- <td>{{ form.username.label_tag }}</td> -->
-				<!-- <td>{{ form.username }}</td> -->
-				<!-- </tr>
-				<tr> -->
-				<!-- <td>{{ form.password.label_tag }}</td> -->
-				<!-- <td>{{ form.password }}</td> -->
-				<!-- </tr>
-			</table> -->
-
-				<div class="form-group">
-					{% for field in form %}
-						<div class="input-group">
-							<input class="login-input" type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" /> 
-							{{ field.errors }}
+			<div class="login-box">
+				<div class="login-inner">
+					<form class="login-form" method="post" action="{% url 'login:login' %}">
+						{% csrf_token %}
+						<b><h2>LOGIN</h2></b>
+						<div class="form-group">
+							{% for field in form %}
+								<div class="input-group">
+									<input class="login-input" type="{{ field.field.widget.input_type }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.html_name }}" /> 
+									{{ field.errors }}
+								</div>
+							{% endfor %}
+							
+							<div class="button-container">
+								<button type="submit" class="login-button">Login</button>
+							</div>
+							<input type="hidden" name="next" value="{{ next }}" />
 						</div>
-					{% endfor %}
+						
+						<div class="separator">Or login with</div>
 
-					<button type="submit" class="login-button">Login</button>
-					<input type="hidden" name="next" value="{{ next }}" />
+						<div class="google-login-container">
+							<a href="{% provider_login_url "google" %}">
+								<img id="google-login-button" src="{% static "sociallogin/btn_google_signin_light_normal_web@2x.png" %}" alt="Google Login">
+							</a>
+						</div>
+					</form>
+
+					<div class="create-account-container">Don't have an account? <a href="{% url 'login:signup' %}">Create one!</a></div>
 				</div>
-
-				<div class="separator"></div>
-
-				<div class="google-login-container">
-					<a href="{% provider_login_url "google" %}">
-						<img id="google-login-button" src="{% static "sociallogin/btn_google_signin_light_normal_web@2x.png" %}" alt="Google Login">
-					</a>
-				</div>
-			</form>
-
-			<div class="create-account-container"><a href="{% url 'login:signup' %}">Create an account</a></div>
+			</div>
 		</div>
 	{% endif %}
 </body>

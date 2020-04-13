@@ -6,7 +6,7 @@
         body, html {
           height: 100%;
           margin: 0;
-          font-family: Arial,courier, Helvetica, sans-serif;
+          font-family: 'Roboto Condensed', sans-serif;
         }
         
         * {
@@ -15,11 +15,12 @@
         
         .bg-image {
           /* The image used */
-          background-image: url("https://res.cloudinary.com/dpcbzfiye/image/upload/w_1620,c_fill,dpr_auto,f_auto,q_auto,fl_progressive/v1546986775/fiz5zkzw5eehp0o7f8uf.jpg");
-          
-          /* Add the blur effect */
-          filter: blur(8px);
-          -webkit-filter: blur(8px);
+          /* background-image: url("https://res.cloudinary.com/dpcbzfiye/image/upload/w_1620,c_fill,dpr_auto,f_auto,q_auto,fl_progressive/v1546986775/fiz5zkzw5eehp0o7f8uf.jpg"); */
+		  /* background: rgb(253,121,168);
+		  background: linear-gradient(0deg, rgba(253,121,168,1) 4%, rgba(236,236,236,1) 100%); */
+		  background: #a8ff78;  /* fallback for old browsers */
+		  background: -webkit-linear-gradient(to top, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+		  background: linear-gradient(to top, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
           
           /* Full height */
           height: 100%; 
@@ -60,7 +61,10 @@
         }
         </style>
   <head>
-    <title>{% block title %}{% endblock %}</title>
+	<title>{% block title %}{% endblock %}</title>
+	
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
 
     <link
       rel="stylesheet"
