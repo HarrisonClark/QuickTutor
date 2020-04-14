@@ -28,7 +28,7 @@
           <a class="nav-element" href="{% url 'study:index' %}" class="p-2 text-dark">Study</a>
           <a class="nav-element" href="{% url 'study:requests' %}" class="p-2 text-dark">Tutor</a>
           {% if user.is_authenticated %}
-            <a class="nav-element" href="{% url 'userprofile:index' %}" class="p-2 text-dark">My Profile</a>
+            <a class="nav-element" href="{% url 'userprofile:index' %}" class="p-2 text-dark">Profile</a>
           {% else %}
             <a id="sign-in" class="nav-element" href="{% url 'login:login' %}" class="=p-2 text-dark">Login</a>
           {% endif %}

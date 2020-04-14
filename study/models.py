@@ -18,7 +18,7 @@ class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     student_year = models.CharField(max_length=50)
     picture = models.URLField()
-    bio = models.TextField(max_length=200, blank=True)
+    bio = models.TextField(max_length=100, blank=True)
 
     def __str__(self):
         return self.user.username + ": " + self.user.first_name + " " + self.user.last_name
