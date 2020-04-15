@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% include "study/request_object.html" with req=tutor_request only %}
+
 {% if user.is_authenticated %}
     {% if user.student == tutor_request.student %}
         {% if tutor_request.tutor == null %}
@@ -16,8 +18,15 @@
             {{tutor_request.tutor}} has volunteered to tutor you!<br>
 
         {% endif %}
+    {% elif user.student == tutor_request.tutor %}
+        <p class="text-white"> Thanks for volunteering to tutor! </p>
+        <p class="text-white"> Here's the contact info for {{ tutor_request.student }}: {{ tutor_request.student.user.email }} </p>
+    {% else %}
+    	<form class="claim-request" method="post" action="{% url 'study:open_request' tutor_request.pk  %}">
+        	{% csrf_token %}
+            <button type="submit" class="btn btn-light btn-lg"> Volunteer to Tutor {{ tutor_request.student }} </button>
+        </form>
     {% endif %}
-
 {% else %}
 <p>Please login to see this page.</p>
 {% endif %}

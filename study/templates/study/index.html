@@ -4,5 +4,19 @@
 
 {% block content %}
 <h1>Want a peer tutor?</h1>
-<a href={% url "study:tutor_request" %} class="btn btn-secondary btn-lg"> Request One Now! </a>
+<a href={% url "study:tutor_request" %} class="btn btn-secondary btn-lg"> Create a Tutor Request Now! </a>
+
+<div style="margin-top:50px">
+{% if student_requests %}
+    <h3>Your Open Requests:</h3>
+    <div class="d-flex flex-wrap justify-content-center">
+    {% for req in student_requests %}
+        {% include "study/request_object.html" with req=req only %}
+    {% endfor %}
+    </div>
+{% else %}
+    You have no open requests for help!
+{% endif %}
+</div>
+
 {% endblock %}
