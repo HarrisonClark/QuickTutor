@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .forms import TutorRequestForm
+from .forms import TutorRequestForm, ClaimRequestForm
 from .models import tutorRequest, Student
 from django.utils import timezone
 from django.views import generic
@@ -9,7 +9,10 @@ from django.views import generic
 
 @login_required
 def index(request):
-    return render(request, 'study/index.html')
+    student_requests = tutorRequest.objects.filter(
+        student=request.user.student)
+
+    return render(request, 'study/index.html', {'student_requests': student_requests})
 
 
 @login_required
@@ -39,12 +42,24 @@ def tutor_request(request):
 
     return render(request, 'study/request.html', {'form': form})
 
-class RequestsView(generic.ListView):
-    template_name = "study/request_list.html"
-    context_object_name = "requests_list"
 
-    def get_queryset(self):
-        """
-        Return five most recent suggestions
-        """
-        return tutorRequest.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+@login_required
+def requests_list(request):
+    unassigned = tutorRequest.objects.filter(
+        pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
+    yours = tutorRequest.objects.filter(pub_date__lte=timezone.now()).order_by(
+        '-pub_date').filter(tutor=request.user.student)
+    return render(request, "study/request_list.html", {"unassigned": unassigned, "yours": yours})
+
+
+def open_request(request, pk):
+    if request.method == 'POST':
+        form = ClaimRequestForm(request.POST)
+        thisReq = tutorRequest.objects.filter(pk=pk)[0]
+        thisReq.tutor = request.user.student
+        thisReq.save()
+    else:
+        form = ClaimRequestForm()
+
+    tutor_request = tutorRequest.objects.filter(pk=pk)[0]
+    return render(request, "study/open_request.html", {'tutor_request': tutor_request, 'form': form})

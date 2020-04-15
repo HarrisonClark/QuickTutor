@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+# from django.contrib.postgres.fields import ArrayField
 
 
 class StudentRatings(models.Model):
@@ -19,16 +20,11 @@ class Student(models.Model):
     student_year = models.CharField(max_length=50)
     picture = models.URLField()
     bio = models.TextField(max_length=100, blank=True)
+    # CoursesTaken = ArrayField(
+    #     models.ForeignKey(Course, on_delete=models.CASCADE), blank=True)
 
     def __str__(self):
-        return self.user.username + ": " + self.user.first_name + " " + self.user.last_name
-
-
-class Tutor(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.URLField()
-    # CoursesTaken = models.ArrayField(
-    #     models.ForeignKey(Course, on_delete=models.CASCADE))
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Course(models.Model):
@@ -44,7 +40,7 @@ class Course(models.Model):
 class tutorRequest(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     tutor = models.ForeignKey(
-        Tutor, on_delete=models.CASCADE, blank=True, null=True)
+        Student, on_delete=models.CASCADE, blank=True, related_name="requestTutor", null=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     description = models.TextField()
     pub_date = models.DateTimeField('date published')

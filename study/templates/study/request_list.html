@@ -4,15 +4,28 @@
 
 {% block content %}
 
-<h1>Tutor Requests</h1>
-
-{% if requests_list %}
-    {% for request in requests_list %}
-        <p>{{ request.description }} <i>by {{ request.student.user.first_name }} {{ request.student.user.last_name }}</i></p>
+<div style="height:auto;">
+<h1>Unassigned Tutor Requests</h1>
+{% if unassigned %}
+    <div class="d-flex flex-wrap justify-content-center">
+    {% for req in unassigned %}
+        {% include "study/request_object.html" with req=req tutor_view=True %}
     {% endfor %}
+    </div>
 {% else %}
-    <p>There are no open tutor requests at this time</p>
+    <p>There are no unassigned tutor requests at this time</p>
     <p>Please check back later</p>
 {% endif %}
-
+<h1>Students You Tutor:</h1>
+{% if yours %}
+    <div class="d-flex flex-wrap justify-content-center">
+    {% for req in yours %}
+        {% include "study/request_object.html" with req=req tutor_view=True %}
+    {% endfor %}
+    </div>
+{% else %}
+    <p>You are not currently tutoring any students</p>
+    <p>Accept unassigned student requests to tutor more students</p>
+{% endif %}
+</div>
 {% endblock %}

@@ -4,10 +4,10 @@
 
 {% block content %}
 <div class="container" style="margin-bottom:50px">
-    <h1>Student Profile:</h1>
     {% if user.student.picture %}
-        <img src="{{ user.student.picture }}" width="240"> 
+        <img src="{{ user.student.picture }}" class="rounded-circle" style="margin-bottom:25px;"width="240"> 
     {% endif %}
+    <h1>Student Profile:</h1>
     <p>Username: {{ user }}</p>
     <p>First Name: {{ user.first_name }}</p>
     <p>Last Name: {{ user.last_name }}</p>
@@ -15,6 +15,5 @@
     <p>Bio: {{ user.student.bio }}</p>
     <a href="edit" class="btn btn-secondary btn-sm">Edit Profile</a>
 </div>
-    <a href="index_tutor" class="btn btn-danger btn-lg">Visit Tutor Profile</a>
     <a href="{% url 'login:logout' %}" class="btn btn-danger btn-lg">Logout</a>
 {% endblock %}
