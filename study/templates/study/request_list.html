@@ -21,7 +21,7 @@
                     <p class="card-text text-secondary">{{ request.description }}</p>
                     <p class="card-text text-secondary"> Request by: {{ request.student }}</p>
                     <p class="card-text"><small class="text-muted">Created {{ request.pub_date }}</small></p>
-                    
+                    <a href="{% url 'study:open-request' request.pk %}">{{ request.pk }}</a> <br/><br/>
                 </div>
                 </div>
             </div>

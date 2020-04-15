@@ -39,6 +39,7 @@ def tutor_request(request):
 
     return render(request, 'study/request.html', {'form': form})
 
+
 class RequestsView(generic.ListView):
     template_name = "study/request_list.html"
     context_object_name = "requests_list"
@@ -48,3 +49,8 @@ class RequestsView(generic.ListView):
         Return five most recent suggestions
         """
         return tutorRequest.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+
+
+def open_request(request, pk):
+    tutor_request = tutorRequest.objects.filter(pk=pk)[0]
+    return render(request, "study/open_request.html", {'tutor_request': tutor_request})
