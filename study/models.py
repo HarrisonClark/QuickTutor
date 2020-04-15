@@ -21,7 +21,7 @@ class Student(models.Model):
     bio = models.TextField(max_length=100, blank=True)
 
     def __str__(self):
-        return self.user.username + ": " + self.user.first_name + " " + self.user.last_name
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Tutor(models.Model):

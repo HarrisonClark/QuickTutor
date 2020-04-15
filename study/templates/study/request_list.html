@@ -4,15 +4,34 @@
 
 {% block content %}
 
+<div style="height:auto; border:black; border-style:solid">
 <h1>Tutor Requests</h1>
 
 {% if requests_list %}
+    <div class="d-flex flex-wrap">
     {% for request in requests_list %}
-        <p>{{ request.description }} <i>by {{ request.student.user.first_name }} {{ request.student.user.last_name }}</i></p>
+        <div class="card mb-3" style="max-height: 200px; min-width:600px; margin:50px">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                <img src={{ request.student.picture }} style="height:200px" alt="User Profile Pic">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ request.course }}</h5>
+                    <p class="card-text text-secondary">{{ request.description }}</p>
+                    <p class="card-text text-secondary"> Request by: {{ request.student }}</p>
+                    <p class="card-text"><small class="text-muted">Created {{ request.pub_date }}</small></p>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
+    </div>
 {% else %}
     <p>There are no open tutor requests at this time</p>
     <p>Please check back later</p>
 {% endif %}
 
+</div>
 {% endblock %}
