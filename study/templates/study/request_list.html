@@ -8,7 +8,7 @@
 <h1>Unassigned Tutor Requests</h1>
 
 {% if subject %}
-    <a class="btn btn-secondary" href="{% url 'study:requests' %}">Remove {{subject}} Filter</a>
+    <a class="btn btn-danger" href="{% url 'study:requests' %}">Remove {{subject}} Filter</a>
 {% else %}
     <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,7 +28,7 @@
     {% endfor %}
     </div>
 {% else %}
-    <p>There are no unassigned tutor requests at this time</p>
+    <p>There are no unassigned tutor requests for {% if subject %} {{subject}} courses {% endif %} at this time</p>
     <p>Please check back later</p>
 {% endif %}
 <h1>Students You Tutor:</h1>
