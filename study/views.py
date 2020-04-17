@@ -45,11 +45,17 @@ def tutor_request(request):
 
 @login_required
 def requests_list(request):
-    unassigned = tutorRequest.objects.filter(
-        pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
+    subject = request.GET.get('subject')
+    if subject == None:
+        unassigned = tutorRequest.objects.filter(
+            pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
+    else:
+        unassigned = tutorRequest.objects.filter(
+            course__subject=subject).filter(
+            pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
     yours = tutorRequest.objects.filter(pub_date__lte=timezone.now()).order_by(
         '-pub_date').filter(tutor=request.user.student)
-    return render(request, "study/request_list.html", {"unassigned": unassigned, "yours": yours})
+    return render(request, "study/request_list.html", {"unassigned": unassigned, "yours": yours, 'subject': subject})
 
 
 def open_request(request, pk):
