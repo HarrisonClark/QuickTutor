@@ -27,26 +27,47 @@ class Student(models.Model):
         return self.user.first_name + " " + self.user.last_name
 
 
+class School(models.Model):
+    abbr = models.CharField(max_length=10)
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.abbr
+
+
+class Subject(models.Model):
+    code = models.CharField(max_length=4)
+    name = models.CharField(max_length=50)
+    school = models.ForeignKey(School, on_delete=models.DO_NOTHING, blank=True)
+
+    def __str__(self):
+        return self.code
+
+
 class Course(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
-    subject = models.CharField(max_length=4)
+
+    # subject = models.CharField(max_length=4)
+    subject = models.ForeignKey(
+        Subject, on_delete=models.DO_NOTHING, blank=True)
+
     course_number = models.CharField(max_length=4)
 
     def __str__(self):
-        return self.subject + self.course_number
+        return self.subject.code + " " + self.course_number
 
 
 class tutorRequest(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     tutor = models.ForeignKey(
         Student, on_delete=models.CASCADE, blank=True, related_name="requestTutor", null=True)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True)
     description = models.TextField()
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):
-        return self.course.subject + self.course.course_number + ": " + self.description
+        return self.course.subject.code + self.course.course_number + ": " + self.description
 
 
 @receiver(post_save, sender=User)

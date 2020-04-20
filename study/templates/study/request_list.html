@@ -6,6 +6,21 @@
 
 <div style="height:auto;">
 <h1>Unassigned Tutor Requests</h1>
+
+{% if subject %}
+    <a class="btn btn-danger" href="{% url 'study:requests' %}">Remove {{subject}} Filter</a>
+{% else %}
+    <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter Courses
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=CS">Computer Science</a>
+        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=APMA">Applied Math</a>
+        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=ECON">Economics</a>
+    </div>
+    </div>
+{% endif %}
 {% if unassigned %}
     <div class="d-flex flex-wrap justify-content-center">
     {% for req in unassigned %}
@@ -13,7 +28,7 @@
     {% endfor %}
     </div>
 {% else %}
-    <p>There are no unassigned tutor requests at this time</p>
+    <p>There are no unassigned tutor requests for {% if subject %} {{subject}} courses {% endif %} at this time</p>
     <p>Please check back later</p>
 {% endif %}
 <h1>Students You Tutor:</h1>

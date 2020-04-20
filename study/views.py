@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import TutorRequestForm, ClaimRequestForm
-from .models import tutorRequest, Student
+from .models import *
 from django.utils import timezone
 from django.views import generic
 
@@ -19,6 +19,7 @@ def index(request):
 def tutor_request(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
+        print(request.POST)
         # create a form instance and populate it with data from the request:
         form = TutorRequestForm(request.POST)
         # check whether it's valid:
@@ -43,13 +44,32 @@ def tutor_request(request):
     return render(request, 'study/request.html', {'form': form})
 
 
+def load_subjects(request):
+    school = request.GET.get('school')
+    subjects = Subject.objects.filter(school__abbr=school).order_by('code')
+    return render(request, 'study/utils/subjects_dropdown.html', {'subjects': subjects})
+
+
+def load_courses(request):
+    subject = request.GET.get('subject')
+    courses = Course.objects.filter(
+        subject__code=subject).order_by('course_number')
+    return render(request, 'study/utils/courses_dropdown.html', {'courses': courses})
+
+
 @login_required
 def requests_list(request):
-    unassigned = tutorRequest.objects.filter(
-        pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
+    subject = request.GET.get('subject')
+    if subject == None:
+        unassigned = tutorRequest.objects.filter(
+            pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
+    else:
+        unassigned = tutorRequest.objects.filter(
+            course__subject__code=subject).filter(
+            pub_date__lte=timezone.now()).order_by('-pub_date').exclude(student=request.user.student).filter(tutor=None)[:5]
     yours = tutorRequest.objects.filter(pub_date__lte=timezone.now()).order_by(
         '-pub_date').filter(tutor=request.user.student)
-    return render(request, "study/request_list.html", {"unassigned": unassigned, "yours": yours})
+    return render(request, "study/request_list.html", {"unassigned": unassigned, "yours": yours, 'subject': subject})
 
 
 def open_request(request, pk):
