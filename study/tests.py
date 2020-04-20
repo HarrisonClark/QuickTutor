@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import StudentRatings, Student, Course
+from .models import *
 from .forms import TutorRequestForm
 
 
@@ -32,12 +32,17 @@ class StudentRatingsTestCase(TestCase):
 class CourseTestCase(TestCase):
 
     def setUp(self):
+        School.objects.create(abbr="SEAS", name="E-School")
+        Subject.objects.create(
+            code="CS", name="Computer Science", school=School.objects.filter(abbr="SEAS")[0])
+        Subject.objects.create(
+            code="PHYS", name="Physics", school=School.objects.filter(abbr="SEAS")[0])
         Course.objects.create(
-            name="Intro to algebra", description="Basic concepts", subject="Math", course_number=101)
+            name="Intro to algebra", description="Basic concepts", subject=Subject.objects.filter(code="CS")[0], course_number=101)
         Course.objects.create(
-            name="Advanced Physics", description="Complex topics", subject="Physics", course_number=543)
+            name="Advanced Physics", description="Complex topics", subject=Subject.objects.filter(code="PHYS")[0], course_number=543)
         Course.objects.create(name="Basic programming", description="for beginners",
-                              subject="Computer Science", course_number=110)
+                              subject=Subject.objects.filter(code="CS")[0], course_number=110)
 
     def test_number_courses(self):
         self.assertEquals(Course.objects.all().count(), 3)
