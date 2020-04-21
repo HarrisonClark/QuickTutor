@@ -1,8 +1,45 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} Quick Tutor! {% endblock %} 
 
 {% block content %}
-<h1>Welcome to Quick Tutor</h1>
-<p>Make an account to access peer tutors near you!</p>
+<!-- <h1>Welcome to Quick Tutor</h1>
+<p>Make an account to access peer tutors near you!</p> -->
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheet.css' %}">
+  <body>
+    <header class="masthead text-white text-center">
+      <div class="overlay"></div>
+          <div class="col-xl-9 mx-auto">
+            <!-- <h1 class="mb-5">Welcome to Quick Tutor!</h1> -->
+                <h1><span>Welcome to</span <br> Quick Tutor</h1> 
+          </div>
+          <!-- <div class="col-md-10 col-lg-8 col-xl-7 mx-auto"> -->
+    </header>
+      <div class="container">
+        <h3 class="mb-5">Hear what professor's are saying...</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid rounded-circle mb-2" src=https://engineering.virginia.edu/sites/default/files/styles/faculty_headshot/public/MarkSherriff_headshot.jpg alt="">
+              <h5>Prof.Mark Sherriff</h5>
+              <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid rounded-circle mb-2" src= https://engineering.virginia.edu/sites/default/files/styles/faculty_headshot/public/AaronBloomfield_headshot.jpg alt="">
+              <h5>Prof.Aaron Bloomfield</h5>
+              <p class="font-weight-light mb-0">"My students love it!"</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid rounded-circle mb-3" src=https://engineering.virginia.edu/sites/default/files/styles/faculty_headshot/public/NadaBasit_headshot.jpg alt="">
+              <h5>Prof. Nada Basit</h5>
+              <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
 {% endblock %}
