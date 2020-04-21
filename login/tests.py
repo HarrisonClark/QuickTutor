@@ -38,3 +38,13 @@ class LoginTests(TestCase):
 		# Get response
 		response = self.client.post(reverse('account_login'), {'login': 'testcase1', 'password': 'test1'})
 		self.assertRedirects(response, settings.LOGIN_REDIRECT_URL, fetch_redirect_response=False)
+		
+	def test_username2(self):
+		# Create user
+		user = get_user_model().objects.create(username='testcase12')
+		user.set_password('test1')
+		user.save()
+		EmailAddress.objects.create(user=user, email="testcase12@test.com", primary=True, verified=True)
+		# Get response
+		response = self.client.post(reverse('account_login'), {'login': 'testcase1', 'password': 'test1'})
+		self.assertRedirects(response, settings.LOGIN_REDIRECT_URL, fetch_redirect_response=False)
