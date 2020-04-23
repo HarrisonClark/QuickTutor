@@ -15,9 +15,13 @@
         Filter Courses
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=CS">Computer Science</a>
-        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=APMA">Applied Math</a>
-        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=ECON">Economics</a>
+        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=CS">CS</a>
+        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=APMA">APMA</a>
+        <a class="dropdown-item" href="{% url 'study:requests' %}?subject=ECON">ECON</a>
+        <div class="form-group">
+                <input type="text" id="customFilter" placeholder="Other CODE">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="filter()">Filter</button>
     </div>
     </div>
 {% endif %}
@@ -43,4 +47,14 @@
     <p>Accept unassigned student requests to tutor more students</p>
 {% endif %}
 </div>
+{% endblock %}
+
+{% block script %}
+
+<script>
+function filter() {
+    window.location.href = "{% url 'study:requests' %}?subject=" + document.getElementById("customFilter").value;
+}
+</script>
+
 {% endblock %}
