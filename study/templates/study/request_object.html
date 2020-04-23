@@ -1,7 +1,11 @@
 <div class="card mb-3" style="max-height: 200px; min-width:600px; margin:50px">
     <div class="row no-gutters">
         <div class="col-md-4">
-        <img src={{ req.student.picture }} style="height:200px; max-width:250px" alt="User Profile Pic">
+        {% if req.student.picture %}
+            <img src={{ req.student.picture }} style="height:200px; max-width:250px" alt="User Profile Pic">
+        {% else %}
+            <img src="https://cdn.onlinewebfonts.com/svg/img_568656.png" style="height:200px; max-width:250px">
+        {% endif %}
         </div>
         <div class="col-md-8">
         <div class="card-body">
