@@ -183,6 +183,10 @@ blockquote {
 .highlights .content {
   background: #ffffff;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025); }
+.highlights .content .icon {
+  max-width:100%;
+  height:auto;
+}
 
 /* Testimonials */
 .testimonials {
@@ -339,21 +343,6 @@ blockquote {
   .testimonials .content .credit strong {
     color: #ce1b28; }
 
-/* Icon */
-.icon {
-  text-decoration: none;
-  border-bottom: none;
-  position: relative; }
-  .icon:before {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-transform: none !important; }
-  .icon > .label {
-    display: none; }
-
 /* Wrapper */
 .wrapper {
   padding: 8rem 0 6rem 0 ;
@@ -378,7 +367,6 @@ blockquote {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  background-image: url("../../images/banner.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
