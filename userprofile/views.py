@@ -6,11 +6,15 @@ from django.contrib.auth.decorators import login_required
 from .forms import EditProfile
 from study.models import Student
 
+
 @login_required
 def index(request):
     return render(request, 'userprofile/index.html')
+
+
 def index_tutor(request):
     return render(request, 'userprofile/index_tutor.html')
+
 
 @login_required
 def edit_profile(request):
@@ -29,7 +33,7 @@ def edit_profile(request):
             user.last_name = form.cleaned_data['last_name']
             user.save()
             student.bio = form.cleaned_data['bio']
-            student.student_year = form.cleaned_data['student_year']
+            student.student_year = form.cleaned_data['graduation_year']
             student.picture = form.cleaned_data['picture']
             student.save()
 
@@ -39,10 +43,10 @@ def edit_profile(request):
     else:
         student = Student.objects.filter(user=request.user)[0]
         data = {'first_name': student.user.first_name,
-            'last_name':student.user.last_name,
-            "bio": student.bio,
-            "student_year": student.student_year,
-            "picture": student.picture}
+                'last_name': student.user.last_name,
+                "bio": student.bio,
+                "graduation_year": student.student_year,
+                "picture": student.picture}
         form = EditProfile(data)
 
         return render(request, 'userprofile/edit.html', {'form': form})
