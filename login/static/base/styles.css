@@ -23,9 +23,7 @@ html {
 * {
   box-sizing: border-box;
 }
-.content {
-  margin-top: 75px;
-}
+
 form {
   display: table;
   margin: auto;
@@ -74,4 +72,10 @@ form {
 #sign-in:hover {
   border-color: #8f94fb;
   color: #8f94fb;
+}
+
+.container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }

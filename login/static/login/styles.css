@@ -3,6 +3,21 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+.content{
+	/* border: 3px solid #f1f1f1; */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	display:table-cell; 
+	vertical-align:middle;
+	margin-top: 0;
+}
+
 .signup-container, .login-container{
 	display:flex;
 	justify-content:center;

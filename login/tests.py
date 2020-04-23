@@ -29,7 +29,7 @@ from allauth.utils import get_user_model, get_username_max_length
 # Create your tests here.
 class LoginTests(TestCase):
 
-	def test_username(self):
+	def test_user_one(self):
 		# Create user
 		user = get_user_model().objects.create(username='testcase1')
 		user.set_password('test1')
@@ -37,4 +37,14 @@ class LoginTests(TestCase):
 		EmailAddress.objects.create(user=user, email="testcase1@test.com", primary=True, verified=True)
 		# Get response
 		response = self.client.post(reverse('account_login'), {'login': 'testcase1', 'password': 'test1'})
+		self.assertRedirects(response, settings.LOGIN_REDIRECT_URL, fetch_redirect_response=False)
+
+	def test_user_two(self):
+		# Create user
+		user = get_user_model().objects.create(username='testcase2')
+		user.set_password('test2')
+		user.save()
+		EmailAddress.objects.create(user=user, email="testcase2@test.com", primary=True, verified=True)
+		# Get response
+		response = self.client.post(reverse('account_login'), {'login': 'testcase2', 'password': 'test2'})
 		self.assertRedirects(response, settings.LOGIN_REDIRECT_URL, fetch_redirect_response=False)
