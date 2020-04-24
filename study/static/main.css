@@ -419,7 +419,9 @@ blockquote {
 	height: 100%;
 }
 .banner-container{
-	margin-top: 115px;
+	margin-top: 350px;
+	margin-bottom: 150px;
+	color: white;
 }
 
 .highlights .content{
