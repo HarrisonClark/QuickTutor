@@ -3,20 +3,39 @@
 {% block title %} Study {% endblock %} 
 
 {% block content %}
-<h1>Want a peer tutor?</h1>
-<a href={% url "study:tutor_request" %} class="btn btn-secondary btn-lg"> Create a Tutor Request Now! </a>
+<div style="
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	display:table-cell; 
+	vertical-align:middle;
+	margin-top: 0;
+	color: white;
+">
+	<h1>Want a peer tutor?</h1>
+	<div style="margin-top: 20px">
+		<a style="background-color: #4e54c8; color: white;" href={% url "study:tutor_request" %} class="btn btn-lg"> Create a Tutor Request Now! </a>
+	</div>
 
-<div style="margin-top:50px">
-{% if student_requests %}
-    <h3>Your Open Requests:</h3>
-    <div class="d-flex flex-wrap justify-content-center">
-    {% for req in student_requests %}
-        {% include "study/request_object.html" with req=req only %}
-    {% endfor %}
-    </div>
-{% else %}
-    You have no open requests for help!
-{% endif %}
+	<div style="margin-top:40px">
+		{% if student_requests %}
+			<h3>Your Open Requests:</h3>
+			<div class="d-flex flex-wrap justify-content-center">
+			{% for req in student_requests %}
+				{% include "study/request_object.html" with req=req only %}
+			{% endfor %}
+			</div>
+		{% else %}
+			<i>You have no open requests for help!</i>
+		{% endif %}
+	</div>
 </div>
+
+
 
 {% endblock %}

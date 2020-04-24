@@ -6,7 +6,7 @@ class TutorRequestForm(forms.Form):
     school = forms.ModelChoiceField(queryset=School.objects.all())
     subject = forms.ModelChoiceField(queryset=Subject.objects.none())
     course = forms.ModelChoiceField(queryset=Course.objects.none())
-    description = forms.CharField()
+    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 2}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

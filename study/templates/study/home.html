@@ -5,12 +5,18 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
   <body>
-    <section id="banner">
-      <div class="inner">
-        <h1>Welcome to Quick Tutor</h1>
-      </div>
-      <video autoplay loop muted playsinline src="static/images/banner.mp4"></video>
-    </section>
+	  	<div class="banner-container">
+			<!-- <section id="banner"> -->
+			<div class="inner">
+				<h1>Welcome to Quick Tutor</h1>
+				<h3>We connect students with skilled tutors</h3>
+				<div class="banner-login">
+					<a id="sign-in-banner" href="{% url 'login:signup' %}">Sign Up!</a>
+				</div>
+			</div>
+			<!-- <video autoplay loop muted playsinline src="static/images/banner.mp4"></video> -->
+			<!-- </section> -->
+		</div>
     <!--
     <header class="masthead text-white text-center">
       <div class="overlay"></div>
@@ -20,48 +26,56 @@
     </header>
   -->
   <!-- Highlights -->
-  <section class="wrapper">
-    <div class="inner">
-      <div class="highlights">
-        <section>
-          <div class="content">
-            <header>
-              <div class="icon">
-                <img src="static/images/icon1.png" width="100" height="100" alt="">
-              </div>
-              <h3>Qualified Tutors</h3>
-            </header>
-            <p>Tutor your fellow students, or get your questions answered by peers!</p>
-          </div>
-        </section>
-        <section>
-          <div class="content">
-            <header>
-              <div class="icon">
-                <img src="static/images/icon2.png" width="100" height="100" alt="">
-              </div>
-              <h3>Get Connected</h3>
-            </header>
-            <p>Students can connect with tutors for personalized, one-on-one tutoring!</p>
-          </div>
-        </section>
-        <section>
-          <div class="content">
-            <header>
-              <div class="icon">
-                <img src="static/images/icon3.png" width="150" height="100" alt="">
-              </div>
-              <h3>Many Subjects</h3>
-            </header>
-            <p>Tutors on our website have mastered a variety of subjects.</p>
-          </div>
-        </section>
-      </div>
-    </div>
-  </section>
+  	<div class="highlights-container">
+		<section class="wrapper">
+			<div class="inner">
+			<div class="highlights">
+				<section>
+					<a class="highlights-btn" href="{% url 'login:signup' %}">
+						<div class="content">
+							<header>
+							<div class="icon">
+								<img src="static/images/icon1.png" width="100" height="100" alt="">
+							</div>
+							<h3>Qualified Tutors</h3>
+							</header>
+							<div class="highlight-box-content"><p>Tutor your fellow students, or get your questions answered by peers!</p></div>
+						</div>
+					</a>
+				</section>
+				<section>
+					<a class="highlights-btn" href="{% url 'login:signup' %}">
+						<div class="content">
+							<header>
+							<div class="icon">
+								<img src="static/images/icon2.png" width="100" height="100" alt="">
+							</div>
+							<h3>Get Connected</h3>
+							</header>
+							<div class="highlight-box-content"><p>Students can connect with tutors for personalized, one-on-one tutoring!</p></div>
+						</div>
+					</a>
+				</section>
+				<section>
+					<a class="highlights-btn" href="{% url 'login:signup' %}">
+						<div class="content">
+							<header>
+							<div class="icon">
+								<img src="static/images/icon3.png" width="150" height="100" alt="">
+							</div>
+							<h3>Academic Variety</h3>
+							</header>
+							<div class="highlight-box-content"><p>Tutors on our website have mastered a variety of subjects.</p></div>
+						</div>
+					</a>
+				</section>
+			</div>
+			</div>
+		</section>
+	</div>
 
 <!-- Testimonials -->
-  <section class="wrapper">
+  <section class="wrapper testimonial-section">
     <div class="inner">
       <header class="special">
         <h2>Hear what professors are saying...</h2>
