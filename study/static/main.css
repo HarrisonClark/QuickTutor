@@ -413,4 +413,29 @@ blockquote {
     position: absolute;
     webkit-linear-gradientidth: 100%;
     width: 100%; }
-    
+	
+#banner{
+	height: 100%;
+}
+.banner-container{
+	margin-top: 115px;
+}
+
+.highlights-container .wrapper{
+	padding: 0;
+} 
+ 
+.wrapper .inner .testimonials{
+	margin: 0px;
+}
+
+.wrapper .inner .testimonials section .content{
+	margin-top: 50px;	
+}
+
+.testimonial-section{
+	background-color: #4e54c8;
+	padding-top: 50px;
+	padding-bottom: 100px;
+	margin-top: 200px;
+}

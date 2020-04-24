@@ -1,5 +1,5 @@
 body,
-html {
+html{
   height: 100%;
   margin: 0;
   font-family: "Roboto", sans-serif !important;
@@ -31,6 +31,7 @@ form {
 }
 .nav {
   background: transparent;
+  font-family: "Roboto", sans-serif !important;
 }
 .navbar {
   padding: 30px;
@@ -93,3 +94,4 @@ form {
 .content {
   margin-top: 75px;
 }
+
