@@ -48,7 +48,11 @@
 							<div class="button-container">
 								<button type="submit" class="login-button">Login</button>
 							</div>
-							<input type="hidden" name="next" value="{{ next }}" />
+							{% if next %}
+								<input type="hidden" name="next" value="{{ next }}" />
+							{% else %}
+								<input type="hidden" name="next" value="/study/" />
+							{% endif %}
 						</div>
 						
 						<div class="separator">Or login with</div>
