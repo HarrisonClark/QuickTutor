@@ -4,19 +4,15 @@
 
 {% block content %}
 <div style="
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 2;
-	width: 80%;
-	padding: 20px;
-	text-align: center;
-	display:table-cell; 
-	vertical-align:middle;
-	margin-top: 0;
-	color: white;
+	color: white; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 100px;
+	min-height: inherit;
+	width: 100%;
 ">
+<div>
 	<h1>Want a peer tutor?</h1>
 	<div style="margin-top: 20px">
 		<a style="background-color: #4e54c8; color: white;" href={% url "study:tutor_request" %} class="btn btn-lg"> Create a Tutor Request Now! </a>
@@ -34,6 +30,7 @@
 			<i>You have no open requests for help!</i>
 		{% endif %}
 	</div>
+</div>
 </div>
 
 
