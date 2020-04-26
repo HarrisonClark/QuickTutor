@@ -61,4 +61,4 @@ class test_tutorRequest_form_valid(TestCase):
         form = TutorRequestForm(data = {
             'school': "SEAS", "subject" : "CS", "course": "CS1010", "description": "help"
         })
-        self.assertFalse(form.is_valid()) 
+        self.assertFalse(form.is_valid())

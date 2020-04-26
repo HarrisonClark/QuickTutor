@@ -1,10 +1,12 @@
 from django.test import TestCase
 from .forms import EditProfile
 # Create your tests here.
-
+from django.urls import reverse,  path, include
 from django.test import TestCase
 from django.test import Client
 from .forms import *   # import all forms
+from .views import *
+from .urls import *
 
 
 class testEditProfileForm(TestCase):
