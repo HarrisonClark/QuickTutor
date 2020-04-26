@@ -26,7 +26,7 @@ def Signup(request):
                                 first_name=first_name,
                                 last_name=last_name)
             login(request, user)
-            return redirect('/')
+            return redirect('/study')
     else:
         form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})

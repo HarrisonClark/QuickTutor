@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client, LiveServerTestCase
 import json
 import uuid
 from datetime import timedelta
@@ -14,7 +14,7 @@ from django.http import HttpResponseRedirect
 from django.template import Context, Template
 from django.test.client import Client, RequestFactory
 from django.test.utils import override_settings
-from django.urls import reverse
+from django.urls import reverse,  path, include
 from django.utils.timezone import now
 
 from allauth.account.forms import BaseSignupForm, ResetPasswordForm, SignupForm
@@ -25,11 +25,13 @@ from allauth.account.models import (
 )
 from allauth.tests import Mock, TestCase, patch
 from allauth.utils import get_user_model, get_username_max_length
-
+from .forms import *
+from .views import *
+from .urls import *
 # Create your tests here.
 class LoginTests(TestCase):
 
-	def test_user_one(self):
+	def test_user_redirect(self):
 		# Create user
 		user = get_user_model().objects.create(username='testcase1')
 		user.set_password('test1')
@@ -38,13 +40,23 @@ class LoginTests(TestCase):
 		# Get response
 		response = self.client.post(reverse('account_login'), {'login': 'testcase1', 'password': 'test1'})
 		self.assertRedirects(response, settings.LOGIN_REDIRECT_URL, fetch_redirect_response=False)
-
-	def test_user_two(self):
-		# Create user
-		user = get_user_model().objects.create(username='testcase2')
-		user.set_password('test2')
+		
+	def test_login_valid(self):
+		user = get_user_model().objects.create(username='student')
+		user.set_password('password')
 		user.save()
-		EmailAddress.objects.create(user=user, email="testcase2@test.com", primary=True, verified=True)
-		# Get response
-		response = self.client.post(reverse('account_login'), {'login': 'testcase2', 'password': 'test2'})
-		self.assertRedirects(response, settings.LOGIN_REDIRECT_URL, fetch_redirect_response=False)
+		EmailAddress.objects.create(user=user, email="student@test.com", primary=True, verified=True)
+		response = self.client.post(reverse('account_login'), {'login': 'student', 'password': 'password'})
+		self.assertTrue(response.context['user'].is_active)		
+
+	def test_site_admin_redirection(self):
+		response = self.client.get('/admin')
+		self.assertEquals(response.status_code, 301)
+
+	def test_url_path(self):
+		self.assertEqual(reverse("account_login"), "/sociallogin/login/")
+
+	def test_notLogged_redirection(self):
+		response = self.client.get('/study/tutor-request/')
+		self.assertEquals(response.status_code, 302)
+		self.assertEquals(response['Location'], "/login/login?next=/study/tutor-request/" )
