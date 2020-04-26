@@ -49,9 +49,14 @@ class LoginTests(TestCase):
 		response = self.client.post(reverse('account_login'), {'login': 'student', 'password': 'password'})
 		self.assertTrue(response.context['user'].is_active)		
 
-	def test_site_redirection(self):
+	def test_site_admin_redirection(self):
 		response = self.client.get('/admin')
 		self.assertEquals(response.status_code, 301)
 
 	def test_url_path(self):
 		self.assertEqual(reverse("account_login"), "/sociallogin/login/")
+
+	def test_notLogged_redirection(self):
+		response = self.client.get('/study/tutor-request/')
+		self.assertEquals(response.status_code, 302)
+		self.assertEquals(response['Location'], "/login/login?next=/study/tutor-request/" )
