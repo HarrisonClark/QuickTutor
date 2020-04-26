@@ -31,6 +31,7 @@ def edit_profile(request):
             student = Student.objects.filter(user=user)[0]
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
+            user.email = form.cleaned_data['email']
             user.save()
             student.bio = form.cleaned_data['bio']
             student.student_year = form.cleaned_data['graduation_year']
@@ -44,6 +45,7 @@ def edit_profile(request):
         student = Student.objects.filter(user=request.user)[0]
         data = {'first_name': student.user.first_name,
                 'last_name': student.user.last_name,
+                "email": student.user.email,
                 "bio": student.bio,
                 "graduation_year": student.student_year,
                 "picture": student.picture}

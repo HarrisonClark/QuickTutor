@@ -6,6 +6,7 @@ from study.models import Student
 class EditProfile(forms.Form):
     first_name = forms.CharField(max_length=25)
     last_name = forms.CharField(max_length=25)
+    email = forms.EmailField()
     graduation_year = forms.ChoiceField(
         choices=[(x, x) for x in range(2020, 2024)])
     picture = forms.URLField(
