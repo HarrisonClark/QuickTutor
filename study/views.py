@@ -35,7 +35,7 @@ def tutor_request(request):
                                   description=desc, pub_date=timezone.now())
             newReq.save()
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/study')
 
     # if a GET (or any other method) we'll create a blank form
     else:
