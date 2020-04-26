@@ -5,7 +5,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-.content{
+/* .content{
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -17,12 +17,14 @@ body {
 	display:table-cell; 
 	vertical-align:middle;
 	margin-top: 0;
-}
+} */
 
 .signup-container, .login-container{
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	height: 100%;
+	min-height: inherit;
 }
 
 .signup-box, .login-box{

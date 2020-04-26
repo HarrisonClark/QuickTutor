@@ -46,15 +46,17 @@ form {
 }
 .navbar {
   padding: 30px;
+  position: relative;
 }
 #logo {
   text-decoration: none;
   color: white;
   transition: 0.3s;
+  display: inline-block;
 }
 
 #logo:hover {
-  font-size: 1.05em;
+  transform: scale(1.05);
 }
 
 .nav-element {
@@ -88,6 +90,7 @@ form {
 }
 
 .page-footer{
+	margin-top: 24px;
 	padding-top: 1rem;
 	background: #4e54c8; /* fallback for old browsers */
   	background: -webkit-linear-gradient(
@@ -102,7 +105,7 @@ form {
 	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.content {
-  margin-top: 75px;
+.content{
+	height: calc(100% - (110px + 50px));
+	min-height: calc(100% - (110px + 50px));
 }
-

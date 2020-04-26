@@ -488,7 +488,7 @@ blockquote {
 	transition: 0.3s ease-in-out;
 	text-decoration: none;
 	display: inline-block;
-	width: 10%;
+	/* width: 10%; */
 }
 
 #sign-in-banner:hover{
@@ -503,4 +503,13 @@ blockquote {
 .highlights-btn:hover{
 	text-decoration: none;
 	color: inherit;
+}
+
+.content{
+	height: 100% !important;
+}
+
+.page-footer{
+	position: relative;
+	margin-top: 100px;
 }
