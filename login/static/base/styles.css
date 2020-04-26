@@ -52,10 +52,11 @@ form {
   text-decoration: none;
   color: white;
   transition: 0.3s;
+  display: inline-block;
 }
 
 #logo:hover {
-  font-size: 1.05em;
+  transform: scale(1.05);
 }
 
 .nav-element {
