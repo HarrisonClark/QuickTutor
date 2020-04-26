@@ -20,13 +20,13 @@
                 <img src="{{ tutor_request.tutor.picture }}" class="rounded-circle" style="margin-bottom:25px;"width="240"> 
             {% endif %}
             <p class="text-white">{{tutor_request.tutor}} has volunteered to tutor you!</p>
-            <p class="text-white"> Here's the contact info for {{ tutor_request.tutor }}: <a href="{{ tutor_request.tutor.user.email }}" class="text-white">{{ tutor_request.tutor.user.email }}</a> </p>
+            <p class="text-white"> Here's the contact info for {{ tutor_request.tutor }}: <a href="mailto:{{ tutor_request.tutor.user.email }}" class="text-white">{{ tutor_request.tutor.user.email }}</a> </p>
 
             {% include "study/map.html" %}
         {% endif %}
     {% elif user.student == tutor_request.tutor %}
         <p class="text-white"> Thanks for volunteering to tutor! </p>
-        <p class="text-white"> Here's the contact info for {{ tutor_request.student }}: <a href="{{ tutor_request.student.user.email }}" class="text-white">{{ tutor_request.student.user.email }}</a> </p>
+        <p class="text-white"> Here's the contact info for {{ tutor_request.student }}: <a href="mailto:{{ tutor_request.student.user.email }}" class="text-white">{{ tutor_request.student.user.email }}</a> </p>
 
         {% include "study/map.html" %}
 
