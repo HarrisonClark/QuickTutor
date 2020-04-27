@@ -55,10 +55,16 @@ class CourseTestCase(TestCase):
         self.assertEqual(cs110.course_number, "110")
         self.assertEqual(phys543.course_number, "543")
         self.assertNotEqual(math101.course_number, 101)
-        
+
 class test_tutorRequest_form_valid(TestCase):
+
     def test_tutorForm(self):
         form = TutorRequestForm(data = {
             'school': "SEAS", "subject" : "CS", "course": "CS1010", "description": "help"
         })
         self.assertFalse(form.is_valid())
+class test_requestURL(TestCase):
+    def test_url_paths(self):
+        self.assertEqual(reverse("study:tutor_request"), "/study/tutor-request/")
+        self.assertEqual(reverse("study:requests"), "/study/requests")
+        self.assertEqual(reverse("study:requests"), "/study/requests")
