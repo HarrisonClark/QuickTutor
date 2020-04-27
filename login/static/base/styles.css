@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600");
 body,
-html{
-  height: 100%;
+html {
   margin: 0;
   font-family: "Roboto", sans-serif !important;
   /* The image used */
@@ -25,24 +24,23 @@ html{
   box-sizing: border-box;
 }
 
-
 form {
   display: table;
   margin: auto;
 }
 .nav {
-	background: #4e54c8; /* fallback for old browsers */
-	background: -webkit-linear-gradient(
-		to right,
-		#8f94fb,
-		#4e54c8
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to right,
-		#8f94fb,
-		#4e54c8
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  	font-family: "Roboto", sans-serif !important;
+  background: #4e54c8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8f94fb,
+    #4e54c8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #8f94fb,
+    #4e54c8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: "Roboto", sans-serif !important;
 }
 .navbar {
   padding: 30px;
@@ -89,23 +87,14 @@ form {
   color: #8f94fb;
 }
 
-.page-footer{
-	margin-top: 24px;
-	padding-top: 1rem;
-	background: #4e54c8; /* fallback for old browsers */
-  	background: -webkit-linear-gradient(
-		to right,
-		#8f94fb,
-		#4e54c8
-	); /* Chrome 10-25, Safari 5.1-6 */
-  	background: linear-gradient(
-		to right,
-		#8f94fb,
-		#4e54c8
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; /* Footer height */
 }
 
-.content{
-	height: calc(100% - (110px + 50px));
-	min-height: calc(100% - (110px + 50px));
+.content {
+  height: calc(100% - (110px + 50px));
+  min-height: calc(100% - (110px + 50px));
 }
