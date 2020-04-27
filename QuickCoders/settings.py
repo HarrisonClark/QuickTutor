@@ -153,6 +153,6 @@ try:
 except ImportError:
     found = False
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/userprofile/edit/'
 LOGIN_URL = '/login/login'
 LOGOUT_REDIRECT_URL = '/login/login'
