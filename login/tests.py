@@ -53,7 +53,7 @@ class LoginTests(TestCase):
 		response = self.client.get('/admin')
 		self.assertEquals(response.status_code, 301)
 
-	def test_url_path(self):
+	def test_urlAcc_path(self):
 		self.assertEqual(reverse("account_login"), "/sociallogin/login/")
 
 	def test_notLogged_redirection(self):

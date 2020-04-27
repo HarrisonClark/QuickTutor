@@ -22,3 +22,9 @@ class testEditProfileForm(TestCase):
             'first_name': "Student", 'last_Name': "", 'student_year': 2022, 'bio': "", 'picture': ""
         })
         self.assertFalse(form2.is_valid())
+
+    def test_urlEdit_path(self):
+        self.assertEqual(reverse("userprofile:edit"), "/userprofile/edit/")
+
+    def test_urlProf_path(self):
+        self.assertEqual(reverse("userprofile:index"), "/userprofile/")
